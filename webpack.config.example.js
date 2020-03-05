@@ -16,26 +16,24 @@ if(uglifyIndex!=-1){
 }
 
 module.exports = {
-    context: path.join(process.cwd(), 'web', 'src'),
-    mode: process.env.NODE_ENV || 'production',
+    context: path.join(process.cwd(), 'example'),
+    mode: 'development',
+    devtool: 'source-map',
     entry: {
-        "index": "./index.js"
-    },
-    externals: {
-        "react": "React",
-        "react-dom": "ReactDOM"
+        "example": "./index.js"
     },
     output: {
-        path: path.join(process.cwd(), 'web', 'dist'),
+        path: path.join(process.cwd(), 'example', 'dist'),
         //chunkFilename: '[name].js',
         filename: '[name].js',
         //library: "friendly",
-        libraryTarget: "this"
+        //libraryTarget: "this"
         //libraryExport: "default"
     },
-    externals: {
-        "react": "React",
-        "react-dom": "ReactDOM"
+    resolve: {
+        alias: {
+            "znui-react": path.resolve(__dirname, '../znui-react')
+        }
     },
     module: {
         // Disable handling of unknown requires
