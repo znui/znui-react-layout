@@ -73,7 +73,7 @@ module.exports = React.createClass({
       return _element;
     }
 
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: "layout-header",
       style: znui.react.style(style, this.state.hStyle)
     }, znui.react.createReactElement(this.props.head, {
@@ -91,7 +91,7 @@ module.exports = React.createClass({
       return _element;
     }
 
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: "layout-body",
       style: znui.react.style(style, this.state.bStyle)
     }, znui.react.createReactElement(this.props.body, {
@@ -109,7 +109,7 @@ module.exports = React.createClass({
       return _element;
     }
 
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: "layout-footer",
       style: znui.react.style(style, this.state.fStyle)
     }, znui.react.createReactElement(this.props.foot, {
@@ -121,7 +121,7 @@ module.exports = React.createClass({
     var _styles = this.__getStyles(); //h, v
 
 
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: znui.react.classname("zr-layout", "zr-fixed-layout", "direction-" + this.props.direction, this.props.className, this.state.className),
       style: znui.react.style(this.props.style, this.state.style)
     }, this.__renderHead(_styles.header), this.__renderBody(_styles.body), this.__renderFoot(_styles.footer));

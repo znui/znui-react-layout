@@ -35,6 +35,12 @@ module.exports = React.createClass({
 			zn.draggable.create(_source, {
 				vector: _vector,
 				start: _start,
+				minX: this.props.minX,
+				maxX: this.props.maxX,
+				minY: this.props.minY,
+				maxY: this.props.maxY,
+				xHandler: this.props.xHandler,
+				yHandler: this.props.yHandler,
 				onDragStart: this.__onNodeDragStart,
 				onDrag: this.__onNodeDrag,
 				onDragEnd: this.__onNodeDragEnd

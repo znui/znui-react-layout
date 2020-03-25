@@ -40,6 +40,12 @@ module.exports = React.createClass({
       zn.draggable.create(_source, {
         vector: _vector,
         start: _start,
+        minX: this.props.minX,
+        maxX: this.props.maxX,
+        minY: this.props.minY,
+        maxY: this.props.maxY,
+        xHandler: this.props.xHandler,
+        yHandler: this.props.yHandler,
         onDragStart: this.__onNodeDragStart,
         onDrag: this.__onNodeDrag,
         onDragEnd: this.__onNodeDragEnd
@@ -131,7 +137,7 @@ module.exports = React.createClass({
     if (_render) {
       return _render;
     } else {
-      return React.createElement("div", {
+      return /*#__PURE__*/React.createElement("div", {
         className: "activity-bar"
       });
     }
@@ -146,7 +152,7 @@ module.exports = React.createClass({
       return _element;
     }
 
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: "layout-header",
       style: znui.react.style(style, this.state.hStyle)
     }, znui.react.createReactElement(this.props.head, {
@@ -158,7 +164,7 @@ module.exports = React.createClass({
     var _this = this;
 
     if (this.props.barWidth) {
-      return React.createElement("div", {
+      return /*#__PURE__*/React.createElement("div", {
         ref: function ref(dom) {
           return _this._bar = dom;
         },
@@ -177,7 +183,7 @@ module.exports = React.createClass({
       return _element;
     }
 
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: "layout-footer",
       style: znui.react.style(style, this.state.fStyle)
     }, znui.react.createReactElement(this.props.foot, {
@@ -188,7 +194,7 @@ module.exports = React.createClass({
   render: function render() {
     var _styles = this.__getStyles();
 
-    return React.createElement("div", {
+    return /*#__PURE__*/React.createElement("div", {
       className: znui.react.classname("zr-layout", "zr-activity-layout", "direction-" + this.props.direction, this.props.className, this.state.className),
       style: znui.react.style(this.props.style, this.state.style)
     }, this.__renderHead(_styles.header), this.__renderBody(_styles.body), this.__renderFoot(_styles.footer));
