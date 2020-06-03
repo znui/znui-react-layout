@@ -51,3 +51,17 @@ module.exports = React.createClass({
 		);
 	}
 });
+
+function fun (a){
+	a(1);
+}
+
+function main (){
+	var f = fun;
+	f(function (i, j, str){
+		console.log(i, j, str);
+		return '1';
+	});
+}
+
+main();
