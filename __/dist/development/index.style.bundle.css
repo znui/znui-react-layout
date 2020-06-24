@@ -27,7 +27,6 @@
 }
 .zr-layout.direction-top-bottom > * {
   left: 0px;
-  width: 100%;
   right: 0px;
 }
 .zr-layout.direction-top-bottom > .layout-header {
