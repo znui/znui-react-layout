@@ -55,7 +55,7 @@
 }
 .zr-layout-flex > .layout-header {
   position: relative;
-  overflow: auto;
+  overflow: hidden;
 }
 .zr-layout-flex > .layout-body {
   position: relative;
