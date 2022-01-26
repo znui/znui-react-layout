@@ -1,6 +1,6 @@
 {
   "name": "znui-react-layout",
-  "version": "2.0.5",
+  "version": "2.0.6",
   "description": "Web layout component.",
   "main": "index.js",
   "scripts": {
