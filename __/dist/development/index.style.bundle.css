@@ -40,6 +40,17 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  /*
+
+    @media (max-width: 780px) {
+        flex-direction: column !important;
+        height: auto;
+        &>*{
+            width: auto !important;
+            height: auto !important;
+            margin: 5px;
+        }
+    }*/
 }
 .zr-layout-flex.column {
   flex-direction: column;
@@ -68,17 +79,6 @@
 .zr-layout-flex > .layout-footer {
   position: relative;
   overflow: auto;
-}
-@media (max-width: 780px) {
-  .zr-layout-flex {
-    flex-direction: column !important;
-    height: auto;
-  }
-  .zr-layout-flex > * {
-    width: auto !important;
-    height: auto !important;
-    margin: 5px;
-  }
 }
 .zr-activity-layout > .layout-body > .activity-bar {
   position: absolute;
