@@ -1,11 +1,12 @@
 "use strict";
 
 var React = znui.React || require('react');
-
 module.exports = React.createClass({
   displayName: 'ActivityLayout',
   getDefaultProps: function getDefaultProps() {
     return {
+      minX: 100,
+      maxX: 480,
       begin: 0,
       end: 0,
       barWidth: 3,
@@ -27,16 +28,13 @@ module.exports = React.createClass({
   },
   componentDidMount: function componentDidMount() {
     var _source = this._bar;
-
     if (_source) {
       var _vector = this.props.direction.split('-'),
-          _start = [this.props.begin, 0];
-
+        _start = [this.props.begin, 0];
       if (this.props.direction == 'top-bottom') {
         _vector = ['bottom', 'top'];
         _start = [this.props.begin, this.props.begin];
       }
-
       zn.draggable.create(_source, {
         vector: _vector,
         start: _start,
@@ -59,6 +57,9 @@ module.exports = React.createClass({
   __onNodeDragStart: function __onNodeDragStart(event, data) {},
   __onNodeDrag: function __onNodeDrag(event, data) {
     if (this.props.direction == 'left-right') {
+      if (data.currX < this.props.minX || data.currX > this.props.maxX) {
+        return false;
+      }
       this.setState({
         hStyle: {
           width: data.currX
@@ -88,22 +89,19 @@ module.exports = React.createClass({
   __onNodeDragEnd: function __onNodeDragEnd(event, data) {},
   __getStyles: function __getStyles() {
     var props = this.props,
-        _unit = props.unit,
-        _begin = props.begin,
-        _end = props.end,
-        _header = {},
-        _body = {},
-        _footer = {};
-
+      _unit = props.unit,
+      _begin = props.begin,
+      _end = props.end,
+      _header = {},
+      _body = {},
+      _footer = {};
     if (props.direction == 'left-right') {
       _body.width = props.barWidth + _unit;
-
       if (_begin) {
         _header.width = _begin + _unit;
         _body.left = _begin + _unit;
         _footer.left = _begin + props.barWidth + _unit;
       }
-
       if (_end) {
         _header.right = _end + props.barWidth + _unit;
         _body.right = _end + _unit;
@@ -111,20 +109,17 @@ module.exports = React.createClass({
       }
     } else {
       _body.height = props.barWidth + _unit;
-
       if (_begin) {
         _header.height = _begin + _unit;
         _body.top = _begin + _unit;
         _footer.top = _begin + props.barWidth + _unit;
       }
-
       if (_end) {
         _header.bottom = _end + props.barWidth + _unit;
         _body.bottom = _end + _unit;
         _footer.height = _end + _unit;
       }
     }
-
     return {
       header: zn.extend(_header, props.hStyle),
       body: zn.extend(_body, props.bStyle),
@@ -133,7 +128,6 @@ module.exports = React.createClass({
   },
   __bodyRender: function __bodyRender() {
     var _render = this.props.bodyRender && this.props.bodyRender(this);
-
     if (_render) {
       return _render;
     } else {
@@ -147,11 +141,9 @@ module.exports = React.createClass({
       style: style,
       layout: this
     });
-
     if (_element) {
       return _element;
     }
-
     return /*#__PURE__*/React.createElement("div", {
       className: "layout-header",
       style: znui.react.style(style, this.state.hStyle)
@@ -162,7 +154,6 @@ module.exports = React.createClass({
   },
   __renderBody: function __renderBody(style) {
     var _this = this;
-
     if (this.props.barWidth) {
       return /*#__PURE__*/React.createElement("div", {
         ref: function ref(dom) {
@@ -178,11 +169,9 @@ module.exports = React.createClass({
       style: style,
       layout: this
     });
-
     if (_element) {
       return _element;
     }
-
     return /*#__PURE__*/React.createElement("div", {
       className: "layout-footer",
       style: znui.react.style(style, this.state.fStyle)
@@ -193,7 +182,6 @@ module.exports = React.createClass({
   },
   render: function render() {
     var _styles = this.__getStyles();
-
     return /*#__PURE__*/React.createElement("div", {
       className: znui.react.classname("zr-layout", "zr-activity-layout", "direction-" + this.props.direction, this.props.className, this.state.className),
       style: znui.react.style(this.props.style, this.state.style)

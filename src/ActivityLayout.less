@@ -1,9 +1,11 @@
 .zr-activity-layout {
     &>.layout-body {
+        background-color: rgba(0, 0, 0, 0.04);
         &>.activity-bar {
             position: absolute;
             /*background-color: #717070;*/
-            background-color: rgba(173, 169, 169, 0.43);;
+            /*background-color: rgba(173, 169, 169, 0.43);*/
+            background-color: rgba(0, 0, 0, 0.15);
             border-radius: 3px;
             //opacity: 0;
             &:hover{
@@ -15,6 +17,7 @@
 
     &.direction-left-right{
         &>.layout-body {
+            cursor: col-resize !important;
             &>.activity-bar {
                 width: 100%;
                 height: 100px;
@@ -26,6 +29,7 @@
 
     &.direction-top-bottom{
         &>.layout-body {
+            cursor: row-resize !important;
             &>.activity-bar {
                 width: 100px;
                 height: 100%;

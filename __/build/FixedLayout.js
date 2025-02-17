@@ -1,7 +1,6 @@
 "use strict";
 
 var React = znui.React || require('react');
-
 module.exports = React.createClass({
   displayName: 'FixedLayout',
   getDefaultProps: function getDefaultProps() {
@@ -26,13 +25,12 @@ module.exports = React.createClass({
   },
   __getStyles: function __getStyles() {
     var props = this.props,
-        _unit = props.unit,
-        _begin = props.begin,
-        _end = props.end,
-        _header = {},
-        _body = {},
-        _footer = {};
-
+      _unit = props.unit,
+      _begin = props.begin,
+      _end = props.end,
+      _header = {},
+      _body = {},
+      _footer = {};
     if (props.direction == 'top-bottom') {
       _header = {
         height: _begin + _unit
@@ -56,7 +54,6 @@ module.exports = React.createClass({
         width: _end + _unit
       };
     }
-
     return {
       header: zn.extend(_header, props.hStyle),
       body: zn.extend(_body, props.bStyle),
@@ -68,11 +65,9 @@ module.exports = React.createClass({
       style: style,
       layout: this
     });
-
     if (_element) {
       return _element;
     }
-
     return /*#__PURE__*/React.createElement("div", {
       className: "layout-header",
       style: znui.react.style(style, this.state.hStyle)
@@ -86,11 +81,9 @@ module.exports = React.createClass({
       style: style,
       layout: this
     });
-
     if (_element) {
       return _element;
     }
-
     return /*#__PURE__*/React.createElement("div", {
       className: "layout-body",
       style: znui.react.style(style, this.state.bStyle)
@@ -104,11 +97,9 @@ module.exports = React.createClass({
       style: style,
       layout: this
     });
-
     if (_element) {
       return _element;
     }
-
     return /*#__PURE__*/React.createElement("div", {
       className: "layout-footer",
       style: znui.react.style(style, this.state.fStyle)
@@ -119,8 +110,6 @@ module.exports = React.createClass({
   },
   render: function render() {
     var _styles = this.__getStyles(); //h, v
-
-
     return /*#__PURE__*/React.createElement("div", {
       className: znui.react.classname("zr-layout", "zr-fixed-layout", "direction-" + this.props.direction, this.props.className, this.state.className),
       style: znui.react.style(this.props.style, this.state.style)

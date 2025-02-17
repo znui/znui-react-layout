@@ -4,6 +4,8 @@ module.exports = React.createClass({
 	displayName:'ActivityLayout',
 	getDefaultProps: function (){
 		return {
+			minX: 100,
+			maxX: 480,
 			begin: 0,
 			end: 0,
 			barWidth: 3,
@@ -61,6 +63,9 @@ module.exports = React.createClass({
 	},
 	__onNodeDrag: function (event, data){
 		if(this.props.direction == 'left-right') {
+			if(data.currX < this.props.minX || data.currX > this.props.maxX){ 
+				return false;
+			}
 			this.setState({
 				hStyle: {
 					width: data.currX

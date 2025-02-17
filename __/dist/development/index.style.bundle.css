@@ -80,21 +80,31 @@
   position: relative;
   overflow: auto;
 }
+.zr-activity-layout > .layout-body {
+  background-color: rgba(0, 0, 0, 0.04);
+}
 .zr-activity-layout > .layout-body > .activity-bar {
   position: absolute;
   /*background-color: #717070;*/
-  background-color: rgba(173, 169, 169, 0.43);
+  /*background-color: rgba(173, 169, 169, 0.43);*/
+  background-color: rgba(0, 0, 0, 0.15);
   border-radius: 3px;
 }
 .zr-activity-layout > .layout-body > .activity-bar:hover {
   opacity: 1;
   cursor: ew-resize;
 }
+.zr-activity-layout.direction-left-right > .layout-body {
+  cursor: col-resize !important;
+}
 .zr-activity-layout.direction-left-right > .layout-body > .activity-bar {
   width: 100%;
   height: 100px;
   top: 50%;
   margin-top: -50px;
+}
+.zr-activity-layout.direction-top-bottom > .layout-body {
+  cursor: row-resize !important;
 }
 .zr-activity-layout.direction-top-bottom > .layout-body > .activity-bar {
   width: 100px;
